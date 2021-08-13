@@ -1,0 +1,30 @@
+{% extends 'urlshortner/base.html' %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="content">
+            <h1 class="title">Short URL</h1>
+            <div class="box">
+                <h2>Paste the <span>url</span> to be shortened</h2>
+                <form action="{% url 'index' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="url" placeholder="Enter the link here">
+                    <input type="submit" value="Shorten URL">
+                </form>
+                {% if new_url %}
+                    <p class="responsive" style="border: 1px solid #2c87c5;
+                    padding: 15px;
+                    width: 50%;
+                    font-size: 18px;
+                    font-weight: bold;
+                    color:#777;
+                    margin: 20px auto;">{{ new_url }}</p>
+                {% endif %}
+                <p>ShortURL.at is a free tool to shorten a URL or reduce a link</p>
+                <p>Use our URL Shortener to create a shortened link making it easy to remember</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+    
